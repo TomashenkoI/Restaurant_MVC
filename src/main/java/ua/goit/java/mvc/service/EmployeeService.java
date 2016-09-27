@@ -22,4 +22,9 @@ public class EmployeeService {
     public Employee getEmployeeByName(String employeeName) {
         return employeeDao.findByName(employeeName);
     }
+
+    @Transactional
+    public void deleteEmployee(Employee employee) {
+        employeeDao.remove(employee);
+    }
 }

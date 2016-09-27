@@ -5,82 +5,68 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 /**
- * Created by 7 on 02.09.2016.
+ * Created by 7 on 12.08.2016.
  */
 @Entity
-@Table(name = "employee")
-public class Employee {
+@Table(name = "employees")
+@Inheritance (strategy = InheritanceType.SINGLE_TABLE)
+public class Employee extends Tables {
 
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
-    private Long id;
+    private int ID;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "lastName")
+    private String lastName;
 
-    @Column(name = "surname")
-    private String surname;
+    @Column(name = "firstname")
+    private String firstName;
 
-    @Column(name = "phone_number")
+    @Column(name = "dateOfBirth")
+    private String dateOfBirth;
+
+    @Column(name = "phoneNumber")
     private String phoneNumber;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "position")
+    @Enumerated(EnumType.STRING)
     private Position position;
 
     @Column(name = "salary")
-    private Float salary;
+    private double salary;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Employee employee = (Employee) o;
-
-        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
-        if (surname != null ? !surname.equals(employee.surname) : employee.surname != null) return false;
-        if (phoneNumber != null ? !phoneNumber.equals(employee.phoneNumber) : employee.phoneNumber != null)
-            return false;
-        if (position != employee.position) return false;
-        return salary != null ? salary.equals(employee.salary) : employee.salary == null;
-
+    public int getID() {
+        return ID;
     }
 
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
-        result = 31 * result + (position != null ? position.hashCode() : 0);
-        result = 31 * result + (salary != null ? salary.hashCode() : 0);
-        return result;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public Long getId() {
-        return id;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getPhoneNumber() {
@@ -99,11 +85,24 @@ public class Employee {
         this.position = position;
     }
 
-    public Float getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(Float salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "ID=" + ID +  "\t" +
+                " lastName=" + "\t" + lastName +
+                " firstName=" +  "\t" + firstName +
+                " dateOfBirth=" +  "\t" + dateOfBirth +
+                " phoneNumber=" +  "\t" + phoneNumber +
+                " position=" +  "\t" + position + "\t" +
+                " salary= " + salary +
+                '}';
     }
 }

@@ -1,8 +1,8 @@
 package ua.goit.java.mvc.Dao.hibernate;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.transaction.annotation.Transactional;
 import ua.goit.java.mvc.Dao.EmployeeDao;
 import ua.goit.java.mvc.Model.Employee;
@@ -36,7 +36,7 @@ public class HEmployeeDao implements EmployeeDao {
     @Transactional
     public Employee findByName(String name) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select e from Employee e where e.name like :name");
+        Query query = session.createQuery("select e from Employee e where e.firstName like :name");
         query.setParameter("name", name);
 
         return (Employee) query.uniqueResult();

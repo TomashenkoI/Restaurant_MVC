@@ -31,9 +31,9 @@ public class EmployeeController {
         Set<Employee> allEmployees = new HashSet<Employee>(employeeDao.findAll());
 
         Employee employee = new Employee();
-        employee.setId(1L);
-        employee.setName("John");
-        employee.setSurname("Smith");
+//        employee.setId(1L);
+//        employee.setName("John");
+//        employee.setSurname("Smith");
         employee.setPosition(Position.WAITER);
         employee.setPhoneNumber("555-55-55");
         employee.setSalary(25000.0F);

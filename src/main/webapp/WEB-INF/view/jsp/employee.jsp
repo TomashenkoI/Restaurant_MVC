@@ -17,12 +17,18 @@
     </tr>
 
         <tr>
-            <td>${employee.name}</td>
-            <td>${employee.surname}</td>
+            <td>${employee.firstName}</td>
+            <td>${employee.lastName}</td>
             <td>${employee.position}</td>
             <td>${employee.phoneNumber}</td>
             <td>${employee.salary}</td>
         </tr>
+
+    <c:set var="employee" value="employee"/>
+
+    <form action="/employees/" method="get">
+        <button style="background-color: red; height: 25px; width: 100px" value="Удалить сотрудника"/>
+    </form>
 
 </table>
 

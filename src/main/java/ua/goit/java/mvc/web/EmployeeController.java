@@ -22,7 +22,6 @@ public class EmployeeController {
     public String employees(Map<String, Object> model){
         model.put("employees", employeeService.getEmployees());
         return "employees";
-
     }
 
     @RequestMapping(value = "/employee/{employeeName}", method = RequestMethod.GET)
@@ -33,7 +32,15 @@ public class EmployeeController {
         modelAndView.setViewName("employee");
 
         return modelAndView;
+    }
 
+    @RequestMapping(value = "/employees/{employeeName}/delete", method = RequestMethod.GET)
+    public String deleteEmployee(@PathVariable String employeeName, Map<String, Object> model) {
+        employeeService.deleteEmployee(employeeService.getEmployeeByName(employeeName));
+
+        model.put("employees", employeeService.getEmployees());
+
+        return "employees";
     }
 
     @Autowired

@@ -16,9 +16,9 @@
     </tr>
 
     <c:forEach items="${employees}" var="employee">
-        <tr>
-            <td><a href="/employee/${employee.name}">${employee.name}</a></td>
-            <td>${employee.surname}</td>
+        <tr bgcolor="#ECECEC" onMouseOver="this.style.backgroundColor='white';" onMouseOut="this.style.backgroundColor='#ECECEC'" onclick="location.href='/employee/${employee.firstName}'">
+            <td>${employee.firstName}</td>
+            <td>${employee.lastName}</td>
             <td>${employee.position}</td>
             <td>${employee.salary}</td>
         </tr>
